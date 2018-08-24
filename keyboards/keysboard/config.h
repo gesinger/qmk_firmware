@@ -23,14 +23,14 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 /* USB Device descriptor parameter */
 #define VENDOR_ID       0xFEED
 #define PRODUCT_ID      0x3060
-#define MANUFACTURER    That-Canadian
-#define PRODUCT         MiniDox
-#define DESCRIPTION     A compact version of the Ergo Dox
+#define MANUFACTURER    gesinger
+#define PRODUCT         keysboard
+#define DESCRIPTION     4 key split keyboard
 
 /* key matrix size */
 // Rows are doubled-up
-#define MATRIX_ROWS 8
-#define MATRIX_COLS 5
+#define MATRIX_ROWS 4
+#define MATRIX_COLS 2
 
 /* COL2ROW or ROW2COL */
 #define DIODE_DIRECTION COL2ROW

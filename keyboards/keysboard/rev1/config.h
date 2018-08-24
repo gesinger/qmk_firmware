@@ -23,14 +23,14 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define DEVICE_VER      0x0001
 
 // wiring of each half
-#define MATRIX_ROW_PINS { B2, B6, B4, B5 }
-#define MATRIX_COL_PINS { F4, D3, D2, D1, D4 }
+#define MATRIX_ROW_PINS { F6, F7 }
+#define MATRIX_COL_PINS { F4, F5 }
 
-#define USE_SERIAL
+#define USE_I2C
 
 //#define EE_HANDS
 
 #define I2C_MASTER_LEFT
 //#define I2C_MASTER_RIGHT
- 
+
 #endif
