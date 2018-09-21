@@ -28,9 +28,8 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 #define USE_I2C
 #define MASTER_LEFT
+// #define EE_HANDS
 
 #define TAPPING_TERM 500
-
-//#define EE_HANDS
 
 #endif
