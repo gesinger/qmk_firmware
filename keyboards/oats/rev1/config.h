@@ -30,7 +30,12 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define MASTER_LEFT
 // #define EE_HANDS
 
-#define TAPPING_TERM 500
+// TODO set to default in newer QMK
+#define PREVENT_STUCK_MODIFIERS
+// allows for faster rolling of keys without considering it a hold
+#define IGNORE_MOD_TAP_INTERRUPT
+// allows for quickly using a hold after a tap, but disallows TT/auto repeat
+#define TAPPING_FORCE_HOLD
 
 // from ergodox_ez
 #define MOUSEKEY_INTERVAL       20
