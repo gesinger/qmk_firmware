@@ -24,13 +24,13 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define VENDOR_ID       0xFEED
 #define PRODUCT_ID      0x0000
 #define MANUFACTURER    gesinger
-#define PRODUCT         oats
-#define DESCRIPTION     36 key split keyboard
+#define PRODUCT         blue hubbard
+#define DESCRIPTION     68 key split keyboard
 
 /* key matrix size */
 // Rows are doubled-up
-#define MATRIX_ROWS 8
-#define MATRIX_COLS 5
+#define MATRIX_ROWS 10
+#define MATRIX_COLS 8
 
 /* COL2ROW or ROW2COL */
 #define DIODE_DIRECTION COL2ROW

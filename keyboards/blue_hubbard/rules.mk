@@ -63,4 +63,4 @@ SLEEP_LED_ENABLE = no       # Breathing sleep LED during USB suspend
 USE_I2C = yes
 SPLIT_KEYBOARD = yes
 
-DEFAULT_FOLDER = oats/rev1
+DEFAULT_FOLDER = blue_hubbard/rev1
