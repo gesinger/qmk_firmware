@@ -10,8 +10,8 @@ extern keymap_config_t keymap_config;
 #define FINEVOLDN LSFT(LALT(KC__VOLDOWN))
 #define APPR LCMD(KC_TAB)
 #define APPL LCMD(LSFT(KC_TAB))
-#define TABR LCMD(KC_TAB)
-#define TABL LCMD(LSFT(KC_TAB))
+#define TABR LCTL(KC_TAB)
+#define TABL LCTL(LSFT(KC_TAB))
 
 // Fillers to make layering more clear
 #define _____ KC_TRNS
