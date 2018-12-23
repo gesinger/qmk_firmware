@@ -5,6 +5,7 @@ extern keymap_config_t keymap_config;
 #define _TOP 0
 #define _NUMS 1
 #define _SPECIAL 2
+#define _COMMANDS 3
 
 #define FINEVOLUP LSFT(LALT(KC__VOLUP))
 #define FINEVOLDN LSFT(LALT(KC__VOLDOWN))
@@ -25,7 +26,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     KC_A, KC_R, KC_S, KC_T, KC_G, KC_K, KC_N, KC_E, KC_I, KC_O,
     // TODO https://github.com/qmk/qmk_firmware/pull/2900 for ;/, ./: in place of </>
     KC_Z, KC_X, KC_C, KC_D, KC_V, KC_M, KC_H, KC_COMM, KC_DOT, KC_SLSH,
-    XXXXX, KC_LALT, KC_LCTL, TT(_SPECIAL), SFT_T(KC_BSPC), LCMD_T(KC_SPC), TT(_NUMS), KC_RCTL, XXXXX, XXXXX
+    TT(_COMMANDS), KC_LALT, KC_LCTL, TT(_SPECIAL), SFT_T(KC_BSPC), LCMD_T(KC_SPC), TT(_NUMS), KC_RCTL, XXXXX, XXXXX
   ),
 
   [_NUMS] = LAYOUT(
@@ -40,6 +41,13 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     KC_DEL, XXXXX, XXXXX, XXXXX, XXXXX, KC__MUTE, FINEVOLDN, FINEVOLUP, KC__VOLDOWN, KC__VOLUP,
     XXXXX, XXXXX, APPL, APPR, XXXXX, KC_LEFT, KC_DOWN, KC_UP, KC_RIGHT, KC_BRIU,
     XXXXX, XXXXX, TABL, TABR, XXXXX, KC_HOME, KC_PGDN, KC_PGUP, KC_END, KC_BRID,
+    _____, _____, _____, _____, _____, _____, _____, _____, _____, _____
+  ),
+
+  [_COMMANDS] = LAYOUT(
+    XXXXX, XXXXX, XXXXX, XXXXX, RESET, XXXXX, XXXXX, XXXXX, XXXXX, XXXXX,
+    XXXXX, XXXXX, XXXXX, XXXXX, XXXXX, XXXXX, XXXXX, XXXXX, XXXXX, XXXXX,
+    XXXXX, XXXXX, XXXXX, XXXXX, XXXXX, XXXXX, XXXXX, XXXXX, XXXXX, XXXXX,
     _____, _____, _____, _____, _____, _____, _____, _____, _____, _____
   ),
 };
