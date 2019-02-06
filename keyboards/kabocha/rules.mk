@@ -59,3 +59,5 @@ NKRO_ENABLE = no # USB Nkey Rollover - if this doesn't work, see here: https://g
 BACKLIGHT_ENABLE = no  # Enable keyboard backlight functionality
 AUDIO_ENABLE = no
 RGBLIGHT_ENABLE = no
+
+CONVERT_TO_PROTON_C = yes
