@@ -25,7 +25,7 @@ extern keymap_config_t keymap_config;
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
   [_TOP] = LAYOUT(
-    LT(_COMMANDS, KC_Q), KC_W, LT(_SYMBOLS, KC_F), KC_P, KC_B, KC_K, KC_L, LT(_NUMS, KC_U), KC_Y, KC_J,
+    LT(_COMMANDS, KC_Q), LT(_SYMBOLS, KC_W), LT(_NUMS, KC_F), KC_P, KC_B, KC_K, KC_L, LT(_NUMS, KC_U), LT(_SYMBOLS, KC_Y), LT(_COMMANDS, KC_J),
     KC_A, KC_R, KC_S, KC_T, KC_G, KC_M, KC_N, KC_E, KC_I, KC_O,
     // TODO https://github.com/qmk/qmk_firmware/pull/2900 for ;/, ./: in place of </>
     CTL_T(KC_Z), ALT_T(KC_V), CMD_T(KC_C), KC_D, SFT_T(KC_BSPC), CMD_T(KC_SPC), KC_H, CMD_T(KC_COMM), ALT_T(KC_DOT), CTL_T(KC_X)
@@ -41,13 +41,13 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [_SYMBOLS] = LAYOUT(
     XXXXX, XXXXX, XXXXX, XXXXX, KC_TILD, XXXXX, KC_EQL, KC_PLUS, KC_MINS, KC_NUBS,
     KC_COLN, KC_SCLN, KC_QUOT, KC_DQT, KC_GRV, XXXXX, KC_LPRN, KC_RPRN, KC_LCBR, KC_RCBR,
-    _____, _____, _____, _____, _____, _____, KC_LBRC, KC_RBRC, KC_UNDS, KC_PIPE
+    _____, _____, KC_ESC, _____, _____, _____, KC_LBRC, KC_RBRC, KC_UNDS, KC_PIPE
   ),
 
   [_COMMANDS] = LAYOUT(
     XXXXX, XXXXX, XXXXX, XXXXX, XXXXX, KC__MUTE, FINEVOLDN, FINEVOLUP, XXXXX, RESET,
     XXXXX, XXXXX, APPL, APPR, XXXXX, KC_LEFT, KC_DOWN, KC_UP, KC_RIGHT, XXXXX,
-    KC_HOME, XXXXX, TABL, TABR, XXXXX, XXXXX, KC_PGDN, KC_PGUP, KC_END, KC_BRID
+    KC_HOME, XXXXX, TABL, TABR, _____, _____, KC_PGDN, KC_PGUP, KC_END, KC_BRID
   ),
 
 };
