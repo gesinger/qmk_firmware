@@ -184,22 +184,22 @@
 /*
  * GPIOA setup:
  *
- * PA0  - ROW1
- * PA1  - ROW2
- * PA2  - ROW3
- * PA3  - COL1
- * PA4  - COL2
- * PA5  - COL7
- * PA6  - COL6
- * PA7  - COL5
- * PA8  - ?
- * PA9  - ?
- * PA10 - ?
+ * PA0  - COL5
+ * PA1  - COL4
+ * PA2  - COL3
+ * PA3  - COL2
+ * PA4  - COL1
+ * PA5  - COL0
+ * PA6  - ROW4
+ * PA7  - ROW3
+ * PA8  - NC
+ * PA9  - ROW1
+ * PA10 - ROW0
  * PA11 - USB_DM
  * PA12 - USB_DP
- * PA13 - COL4/SWDIO (for now, COL4)
- * PA14 - COL3/SWCLK (for now, COL3)
- * PA15 - ?
+ * PA13 - COL15/SWDIO (for now, COL15)
+ * PA14 - COL14/SWCLK (for now, COL14)
+ * PA15 - COL13
  */
 #define VAL_GPIOA_MODER             (PIN_MODE_INPUT(GPIOA_PIN0) |           \
                                      PIN_MODE_INPUT(GPIOA_PIN1) |           \
@@ -301,25 +301,25 @@
 /*
  * GPIOB setup:
  *
- * PB0  - ?
- * PB1  - Col8
- * PB2  - ?
- * PB3  - ?
- * PB4  - ?
- * PB5  - ?
- * PB6  - ?
- * PB7  - ?
+ * PB0  - ROW2
+ * PB1  - RGB_D
+ * PB2  - PIN2                      (input pullup).
+ * PB3  - COL12
+ * PB4  - COL11
+ * PB5  - COL10
+ * PB6  - COL9
+ * PB7  - COL8
  * PB8  - BOOT0 (set as output for STM32F042)
- * PB9  - ?
- * PB10 - ?
- * PB11 - ?
- * PB12 - ?
- * PB13 - ?
- * PB14 - ?
- * PB15 - ?
+ * PB9  - PIN9                      (input pullup).
+ * PB10 - PIN10                     (input pullup).
+ * PB11 - PIN11                     (input pullup).
+ * PB12 - PIN12                     (input pullup).
+ * PB13 - PIN13                     (input pullup).
+ * PB14 - PIN14                     (input pullup).
+ * PB15 - PIN15                     (input pullup).
  */
 #define VAL_GPIOB_MODER             (PIN_MODE_INPUT(GPIOB_PIN0) |         \
-                                     PIN_MODE_INPUT(GPIOB_PIN1) |         \
+                                     PIN_MODE_OUTPUT(GPIOB_PIN1) |         \
                                      PIN_MODE_INPUT(GPIOB_PIN2) |           \
                                      PIN_MODE_INPUT(GPIOB_PIN3) |       \
                                      PIN_MODE_INPUT(GPIOB_PIN4) |        \
@@ -351,7 +351,7 @@
                                      PIN_OTYPE_PUSHPULL(GPIOB_PIN14) |      \
                                      PIN_OTYPE_PUSHPULL(GPIOB_PIN15))
 #define VAL_GPIOB_OSPEEDR           (PIN_OSPEED_VERYLOW(GPIOB_PIN0) |        \
-                                     PIN_OSPEED_VERYLOW(GPIOB_PIN1) |        \
+                                     PIN_OSPEED_HIGH(GPIOB_PIN1) |        \
                                      PIN_OSPEED_HIGH(GPIOB_PIN2) |          \
                                      PIN_OSPEED_VERYLOW(GPIOB_PIN3) |       \
                                      PIN_OSPEED_VERYLOW(GPIOB_PIN4) |       \
@@ -367,7 +367,7 @@
                                      PIN_OSPEED_HIGH(GPIOB_PIN14) |         \
                                      PIN_OSPEED_HIGH(GPIOB_PIN15))
 #define VAL_GPIOB_PUPDR             (PIN_PUPDR_PULLUP(GPIOB_PIN0) |       \
-                                     PIN_PUPDR_PULLUP(GPIOB_PIN1) |       \
+                                     PIN_PUPDR_FLOATING(GPIOB_PIN1) |       \
                                      PIN_PUPDR_PULLUP(GPIOB_PIN2) |         \
                                      PIN_PUPDR_PULLUP(GPIOB_PIN3) |    \
                                      PIN_PUPDR_PULLUP(GPIOB_PIN4) |      \
@@ -769,8 +769,8 @@
 /*
  * GPIOF setup:
  *
- * PF0  - NC
- * PF1  - NC
+ * PF0  - COL7
+ * PF1  - COL6
  * PF2  - PIN2                      (input pullup).
  * PF3  - PIN3                      (input pullup).
  * PF4  - PIN4                      (input pullup).
