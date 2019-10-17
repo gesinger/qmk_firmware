@@ -22,36 +22,78 @@ extern keymap_config_t keymap_config;
 #define _____ KC_TRNS
 #define XXXXX KC_NO
 
+enum custom_keycodes {
+  KC_DOTCLN = SAFE_RANGE,
+  KC_COMMSCLN,
+};
+
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
   [_TOP] = LAYOUT(
-    LT(_COMMANDS, KC_Q), KC_W, KC_F, KC_P, KC_B, KC_J, KC_L, KC_U, KC_Y, KC_TAB,
-    KC_A, KC_R, KC_S, KC_T, KC_G, KC_M, KC_N, KC_E, KC_I, KC_O,
-    // TODO https://github.com/qmk/qmk_firmware/pull/2900 for ;/, ./: in place of </>
-    CTL_T(KC_Z), ALT_T(KC_X), CMD_T(KC_C), KC_D, KC_V, KC_K, KC_H, CMD_T(KC_COMM), ALT_T(KC_DOT), CTL_T(KC_SLSH),
-    TT(_SYMBOLS), SFT_T(KC_BSPC), CMD_T(KC_SPC), TT(_NUMS)
+    ALT_T(KC_Q), KC_W, KC_F, KC_P, KC_B, KC_J, KC_L, KC_U, KC_Y, ALT_T(KC_TAB),
+    CTL_T(KC_A), CMD_T(KC_R), LT(_NUMS, KC_S), LT(_SYMBOLS, KC_T), KC_G, KC_M, LT(_SYMBOLS, KC_N), LT(_NUMS, KC_E), CMD_T(KC_I), CTL_T(KC_O),
+    KC_Z, KC_X, KC_C, KC_D, KC_V, KC_K, KC_H, KC_COMMSCLN, KC_DOTCLN, KC_ENT,
+    XXXXX, SFT_T(KC_BSPC), LT(_COMMANDS, KC_SPC), XXXXX
   ),
 
   [_NUMS] = LAYOUT(
-    KC_EXLM, KC_AT, KC_HASH, KC_DLR, KC_PERC, KC_CIRC, KC_AMPR, KC_ASTR, KC_LPRN, KC_RPRN,
-    CTL_T(KC_1), ALT_T(KC_2), CMD_T(KC_3), SFT_T(KC_4), KC_5, KC_6, SFT_T(KC_7), CMD_T(KC_8), ALT_T(KC_9), CTL_T(KC_0),
-    // TODO KC_LT, KC_GT swap with shifted first layer , and .
+    KC_LALT, XXXXX, XXXXX, XXXXX, XXXXX, XXXXX, KC_MINS, KC_EQL, KC_PLUS, KC_RALT,
+    CTL_T(KC_1), CMD_T(KC_2), KC_3, KC_4, KC_5, KC_6, KC_7, KC_8, CMD_T(KC_9), CTL_T(KC_0),
     _____, _____, _____, _____, _____, _____, _____, _____, _____, _____,
-    KC_ENT, _____, _____, _____
+    _____, _____, _____, _____
   ),
 
   [_SYMBOLS] = LAYOUT(
-    XXXXX, XXXXX, XXXXX, XXXXX, KC_TILD, XXXXX, KC_EQL, KC_PLUS, KC_MINS, KC_NUBS,
-    KC_COLN, KC_SCLN, KC_QUOT, KC_DQT, KC_GRV, XXXXX, KC_LPRN, KC_RPRN, KC_LCBR, KC_RCBR,
-    _____, _____, _____, _____, _____, _____, KC_LBRC, KC_RBRC, KC_UNDS, KC_PIPE,
+    XXXXX, XXXXX, KC_LPRN, KC_RPRN, XXXXX, XXXXX, XXXXX, XXXXX, XXXXX, XXXXX,
+    KC_LCTL, CMD_T(KC_UNDS), KC_LCBR, KC_RCBR, KC_TILD, KC_GRV, KC_DQT, KC_QUOT, CMD_T(KC_QUES), CTL_T(KC_EXLM),
+    _____, KC_PIPE, KC_LBRC, KC_RBRC, _____, KC_BSLS, KC_SLSH, KC_LT, KC_GT, _____,
     _____, _____, _____, _____
   ),
 
   [_COMMANDS] = LAYOUT(
-    XXXXX, XXXXX, XXXXX, XXXXX, XXXXX, KC__MUTE, FINEVOLDN, FINEVOLUP, XXXXX, RESET,
-    XXXXX, XXXXX, APPL, APPR, XXXXX, KC_LEFT, KC_DOWN, KC_UP, KC_RIGHT, XXXXX,
-    XXXXX, XXXXX, TABL, TABR, XXXXX, KC_HOME, KC_PGDN, KC_PGUP, KC_END, KC_BRID,
+    XXXXX, XXXXX, APPL, APPR, KC_BTN2, KC_BRIU, KC__MUTE, FINEVOLDN, FINEVOLUP, RESET,
+    KC_MS_L, KC_MS_D, KC_MS_U, KC_MS_D, KC_BTN1, KC_ESC, KC_LEFT, KC_DOWN, KC_UP, KC_RIGHT,
+    XXXXX, XXXXX, TABL, TABR, XXXXX, KC_BRID, KC_HOME, KC_PGDN, KC_PGUP, KC_END,
     _____, _____, _____, _____
   ),
 
+};
+
+bool shift_held(void) {
+  return (get_mods() & MOD_BIT(KC_LSHIFT)) || (get_mods() & MOD_BIT(KC_RSHIFT));
+};
+
+void custom_shift(keyrecord_t *record, uint16_t key, uint16_t shift_key, bool keep_shift) {
+  if (record->event.pressed) {
+    if (shift_held()) {
+      uint8_t shift_kc = KC_LSFT;
+      if (keyboard_report->mods & MOD_BIT(KC_RSFT)) {
+        shift_kc = KC_RSFT;
+      }
+      // shift will mod the keycode on its own
+      if (!keep_shift) {
+        unregister_code(shift_kc);
+      }
+      register_code(shift_key);
+      register_code(shift_kc);
+    } else {
+      register_code(key);
+    }
+  } else {
+    unregister_code(shift_key);
+    unregister_code(key);
+  }
+}
+
+bool process_record_user(uint16_t keycode, keyrecord_t *record) {
+  switch (keycode) {
+    // TODO https://github.com/qmk/qmk_firmware/pull/2900
+    case KC_DOTCLN:
+      custom_shift(record, KC_DOT, KC_COLN, true);
+      return false;
+    case KC_COMMSCLN:
+      custom_shift(record, KC_COMM, KC_SCLN, false);
+      return false;
+  }
+  return true;
 };
