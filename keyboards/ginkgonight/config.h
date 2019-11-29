@@ -8,7 +8,7 @@
 #define PRODUCT_ID      0x0000
 #define DEVICE_VER      0x0001
 #define MANUFACTURER    gesinger
-#define PRODUCT         ginkgo
+#define PRODUCT         ginkgo night
 #define DESCRIPTION     32 key ortholinear split with column stagger and thumb key
 
 /* key matrix size */
@@ -16,8 +16,8 @@
 #define MATRIX_COLS 8
 
 /* key matrix pins */
-#define MATRIX_ROW_PINS { B1, F7, F6, D0 }
-#define MATRIX_COL_PINS { D1, D2, D3, D4, B3, B2, F4, F5 }
+#define MATRIX_ROW_PINS { B5, B4, B3, A15 }
+#define MATRIX_COL_PINS { A6, A7, B0, B1, A0, A1, A2, A3 }
 #define UNUSED_PINS
 
 /* COL2ROW or ROW2COL */
