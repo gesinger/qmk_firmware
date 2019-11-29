@@ -33,28 +33,28 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     ALT_T(KC_Q), KC_W, KC_F, KC_P, KC_B, KC_J, KC_L, KC_U, KC_Y, ALT_T(KC_TAB),
     CTL_T(KC_A), CMD_T(KC_R), LT(_NUMS, KC_S), LT(_SYMBOLS, KC_T), KC_G, KC_M, LT(_SYMBOLS, KC_N), LT(_NUMS, KC_E), CMD_T(KC_I), CTL_T(KC_O),
     KC_Z, KC_X, KC_C, KC_D, KC_V, KC_K, KC_H, KC_COMMSCLN, KC_DOTCLN, KC_ENT,
-    SFT_T(KC_BSPC), LT(_COMMANDS, KC_SPC)
+    XXXXX, SFT_T(KC_BSPC), LT(_COMMANDS, KC_SPC), XXXXX
   ),
 
   [_NUMS] = LAYOUT(
     KC_LALT, XXXXX, XXXXX, XXXXX, XXXXX, XXXXX, KC_MINS, KC_EQL, KC_PLUS, KC_RALT,
     CTL_T(KC_1), CMD_T(KC_2), KC_3, KC_4, KC_5, KC_6, KC_7, KC_8, CMD_T(KC_9), CTL_T(KC_0),
     _____, _____, _____, _____, _____, _____, _____, _____, _____, _____,
-    _____, _____
+    _____, _____, _____, _____
   ),
 
   [_SYMBOLS] = LAYOUT(
     XXXXX, XXXXX, KC_LPRN, KC_RPRN, XXXXX, XXXXX, XXXXX, XXXXX, XXXXX, XXXXX,
     KC_LCTL, CMD_T(KC_UNDS), KC_LCBR, KC_RCBR, KC_TILD, KC_GRV, KC_DQT, KC_QUOT, CMD_T(KC_QUES), CTL_T(KC_EXLM),
     _____, KC_PIPE, KC_LBRC, KC_RBRC, _____, KC_BSLS, KC_SLSH, KC_LT, KC_GT, _____,
-    _____, _____
+    _____, _____, _____, _____
   ),
 
   [_COMMANDS] = LAYOUT(
     XXXXX, XXXXX, APPL, APPR, KC_BTN2, KC_BRIU, KC__MUTE, FINEVOLDN, FINEVOLUP, RESET,
     KC_MS_L, KC_MS_D, KC_MS_U, KC_MS_R, KC_BTN1, KC_ESC, KC_LEFT, KC_DOWN, KC_UP, KC_RIGHT,
     XXXXX, XXXXX, TABL, TABR, XXXXX, KC_BRID, KC_HOME, KC_PGDN, KC_PGUP, KC_END,
-    _____, _____
+    _____, _____, _____, _____
   ),
 
 };
