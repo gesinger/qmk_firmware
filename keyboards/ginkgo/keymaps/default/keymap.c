@@ -97,3 +97,26 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
   }
   return true;
 };
+
+layer_state_t layer_state_set_user(layer_state_t state) {
+  writePinLow(C6);
+  writePinLow(D7);
+  writePinLow(B5);
+  writePinLow(B6);
+
+  switch (get_highest_layer(state)) {
+  case _NUMS:
+		writePinHigh(C6);
+    break;
+  case _SYMBOLS:
+		writePinHigh(D7);
+    break;
+  case _COMMANDS:
+		writePinHigh(B6);
+    break;
+	default: //  for any other layers, or the default layer
+		break;
+	}
+
+  return state;
+}
