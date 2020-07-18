@@ -30,23 +30,16 @@ enum custom_keycodes {
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
   [_TOP] = LAYOUT(
-    ALT_T(KC_Q), KC_W, KC_F, KC_P, KC_B, KC_J, KC_L, KC_U, KC_Y, ALT_T(KC_TAB),
-    CTL_T(KC_A), CMD_T(KC_R), LT(_NUMS, KC_S), LT(_SYMBOLS, KC_T), KC_G, KC_M, LT(_SYMBOLS, KC_N), LT(_NUMS, KC_E), CMD_T(KC_I), CTL_T(KC_O),
-    KC_Z, KC_X, KC_C, KC_D, KC_V, KC_K, KC_H, KC_COMMSCLN, KC_DOTCLN, KC_ENT,
-    SFT_T(KC_BSPC), LT(_COMMANDS, KC_SPC)
+    KC_Q, KC_W, KC_E, KC_R, KC_T,                                KC_Y, KC_U, KC_I, KC_O, KC_P,
+    KC_A, KC_S, KC_D, KC_F, KC_G,                                KC_H, KC_J, KC_K, KC_L, KC_SCLN,
+    SFT_T(KC_Z), CTL_T(KC_X), ALT_T(KC_C), CMD_T(KC_V), KC_B,    KC_N, CMD_T(KC_M), ALT_T(KC_COMM), CTL_T(KC_DOT), SFT_T(KC_SLSH),
+    LT(_COMMANDS, KC_SPC), LT(_NUMS, KC_SPC)
   ),
 
   [_NUMS] = LAYOUT(
-    KC_LALT, XXXXX, XXXXX, XXXXX, XXXXX, XXXXX, KC_MINS, KC_EQL, KC_PLUS, KC_RALT,
-    CTL_T(KC_1), CMD_T(KC_2), KC_3, KC_4, KC_5, KC_6, KC_7, KC_8, CMD_T(KC_9), CTL_T(KC_0),
-    _____, _____, _____, _____, _____, _____, _____, _____, _____, _____,
-    _____, _____
-  ),
-
-  [_SYMBOLS] = LAYOUT(
-    XXXXX, XXXXX, KC_LPRN, KC_RPRN, XXXXX, XXXXX, XXXXX, XXXXX, XXXXX, XXXXX,
-    KC_LCTL, CMD_T(KC_UNDS), KC_LCBR, KC_RCBR, KC_TILD, KC_GRV, KC_DQT, KC_QUOT, CMD_T(KC_QUES), CTL_T(KC_EXLM),
-    _____, KC_PIPE, KC_LBRC, KC_RBRC, _____, KC_BSLS, KC_SLSH, KC_LT, KC_GT, _____,
+    KC_ESC, KC_GRV, _____, _____, _____,     KC_QUOT, KC_MINS, KC_EQL, KC_PLUS, KC_BSPC,
+    KC_1, KC_2, KC_3, KC_4, KC_5,            KC_6, KC_7, KC_8, KC_9, KC_0,
+    _____, _____, _____, _____, _____,       _____, _____, ALT_T(KC_LBRC), CTL_T(KC_RBRC), SFT_T(KC_BSLASH),
     _____, _____
   ),
 
@@ -54,7 +47,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     XXXXX, XXXXX, APPL, APPR, KC_BTN2, KC_BRIU, KC__MUTE, FINEVOLDN, FINEVOLUP, RESET,
     KC_MS_L, KC_MS_D, KC_MS_U, KC_MS_R, KC_BTN1, KC_ESC, KC_LEFT, KC_DOWN, KC_UP, KC_RIGHT,
     XXXXX, XXXXX, TABL, TABR, XXXXX, KC_BRID, KC_HOME, KC_PGDN, KC_PGUP, KC_END,
-    _____, _____
+    _____, KC_ENT
   ),
 
 };
@@ -97,26 +90,3 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
   }
   return true;
 };
-
-layer_state_t layer_state_set_user(layer_state_t state) {
-  writePinLow(C6);
-  writePinLow(D7);
-  writePinLow(B5);
-  writePinLow(B6);
-
-  switch (get_highest_layer(state)) {
-  case _NUMS:
-		writePinHigh(C6);
-    break;
-  case _SYMBOLS:
-		writePinHigh(D7);
-    break;
-  case _COMMANDS:
-		writePinHigh(B6);
-    break;
-	default: //  for any other layers, or the default layer
-		break;
-	}
-
-  return state;
-}
